@@ -7,12 +7,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class sayacController extends AbstractController
 {
 
-
-
     /**
-     * @Route("/",name="index")
+     * @Route("/",name="secim-sayaci")
      */
-    public function index(){
+    public function secimSayaci(){
         $url = "https://www.dolarbey.com";
         $linkData = file_get_contents($url);
 
@@ -39,6 +37,13 @@ class sayacController extends AbstractController
         $data = preg_match_all('@<div data-socket-key="GBP" data-socket-type="C" data-socket-attr="s" class="text-xl font-semibold text-white">(.*?)</div>@si',$linkData,$response);
         $euro = $response[1][0];
         return $euro;
+    }
+
+    /**
+     * @Route ("/new-year","new-year")
+     */
+    public function newYear(){
+        return $this->render('newYear.html.twig');
     }
 
 

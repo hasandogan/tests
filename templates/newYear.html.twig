@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+{% block head %}
+    {{ parent() }}
+    <meta name="description" content="Yıl başına kadar geri sayım aracı,web sitesi" />
+{% endblock %}
+ {% block javascripts %}
+     {{ parent() }}
+     <script src="js/newYear.js "></script>
+ {% endblock %}
+{% block body %}
+    {{ parent() }}
+<div id="shadowBox">
+    <p class="rainbow rainbow_text_animated" id="demo"></p>
+</div>
+{% endblock %}

@@ -1,10 +1,4 @@
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-8D6XSLK8WY');
-
-    var countDownDate = new Date("june 17, 2023 23:59:59").getTime();
+ var countDownDate = new Date("june 17, 2023 23:59:59").getTime();
 
     var x = setInterval(function() {
 
