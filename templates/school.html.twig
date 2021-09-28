@@ -1,7 +1,8 @@
 {% extends "base.html.twig" %}
 {% block head %}
     {{ parent() }}
-    <meta name="description" content="Okulların tatil olmasına geri sayım aracı,web sitesi" />
+    {% block title %}Okulların kapanması sayacı{% endblock %}
+    <meta name="description" content="Okulların tatil olmasına geri sayım aracı,web sitesi sürekli günce ve anlık bilgileri çekerek değerli ziyaretçilerimize en doğru bilgiyi göstermektedir" />
 {% endblock %}
  {% block javascripts %}
      {{ parent() }}
