@@ -4,7 +4,7 @@
 
     gtag('config', 'G-8D6XSLK8WY');
 
-    var countDownDate = new Date("june 18, 2023 15:37:25").getTime();
+    var countDownDate = new Date("june 17, 2023 23:59:59").getTime();
 
     var x = setInterval(function() {
 
