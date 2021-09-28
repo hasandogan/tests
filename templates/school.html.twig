@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+{% block head %}
+    {{ parent() }}
+    <meta name="description" content="Okulların tatil olmasına geri sayım aracı,web sitesi" />
+{% endblock %}
+ {% block javascripts %}
+     {{ parent() }}
+     <script src="js/school.js "></script>
+ {% endblock %}
+{% block body %}
+    {{ parent() }}
+    <div id="shadowBox">
+        <p style="top: 50%" class="rainbow rainbow_text_animated" id="demo"></p>
+    </div>
+
+
+{% endblock %}
