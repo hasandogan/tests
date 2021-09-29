@@ -14,8 +14,6 @@ class sayacController extends AbstractController
         return $this->render('sayac.html.twig');
 
     }
-
-
     /**
      * @Route ("/new-year","new-year")
      */
@@ -28,6 +26,22 @@ class sayacController extends AbstractController
      */
     public function school(){
         return $this->render('school.html.twig');
+    }
+
+    /**
+     * @Route ("/login","login")
+     */
+   public function login(){
+       return $this->render('login.html.twig');
+
+   }
+
+    /**
+     * @Route ("/register", name="login")
+     */
+    public function register()
+    {
+        return $this->render('register.html.twig');
     }
 
 
