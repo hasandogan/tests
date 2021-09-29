@@ -12,7 +12,7 @@ class sayacController extends AbstractController
      */
     public function secimSayaci(){
         $url = "https://www.dolarbey.com";
-        $linkData = file_get_contents($url);
+        $linkData = file_get_contents($url,false, stream_context_create(['https' => ['ignore_errors' => true]]));
 
       $dolar = $this->getDolar($linkData);
       $euro = $this->getEuro($linkData);
