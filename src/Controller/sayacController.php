@@ -36,13 +36,7 @@ class sayacController extends AbstractController
 
    }
 
-    /**
-     * @Route ("/register", name="login")
-     */
-    public function register()
-    {
-        return $this->render('register.html.twig');
-    }
+
 
 
 
