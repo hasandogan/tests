@@ -13,11 +13,11 @@
 
         {% block stylesheets %}
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-            <link rel="stylesheet" href="css/style.css">
+            <link rel="stylesheet" href="{{ asset("css/style.css") }}">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
                   integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
                   crossorigin="anonymous">
-            <link rel="stylesheet" href="css/font-awesome.css">
+            <link rel="stylesheet" href="{{ asset("css/font-awesome.css") }}">
             <link href='//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'/>
             <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         {% endblock %}
@@ -25,7 +25,7 @@
         {% block javascripts %}
             <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D6XSLK8WY"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-            <script src="js/google.js"></script>
+            <script src="{{ asset("js/google.js") }}"></script>
             <script data-ad-client="ca-pub-1359373012454584" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -37,7 +37,7 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
                     <a href="#" class="navbar-brand">
-                        <img src="img/saat.png" height="28" alt="CoolBrand">
+                        <img src="{{ asset("img/saat.png") }}" height="28" alt="CoolBrand">
                     </a>
                     <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
@@ -47,8 +47,13 @@
                             <a href="/" class="nav-item nav-link active">Seçim Sayacı</a>
                             <a href="/new-year" class="nav-item nav-link active">Yıl Başı Sayacı</a>
                             <a href="/school" class="nav-item nav-link active">Okul Sayacı</a>
+                            {%  if app.session.get('email') %}
+                                <a href="/profile" style="float:right" class="nav-item nav-link active">Profil</a>
+                                <a href="/logout" style="float:right" class="nav-item nav-link active">Çıkış</a>
+                            {% else %}
                             <a href="/login" style="float:right" class="nav-item nav-link active">Giriş</a>
                             <a href="/register" class="nav-item nav-link active">Kayıt Ol</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

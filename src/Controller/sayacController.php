@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 class sayacController extends AbstractController
 {
@@ -36,6 +38,7 @@ class sayacController extends AbstractController
 
    }
 
+
     /**
      * @Route ("/register", name="login")
      */
@@ -43,6 +46,16 @@ class sayacController extends AbstractController
     {
         return $this->render('register.html.twig');
     }
+
+    /**
+     * @Route ("/logout",name="logout")
+     */
+    public function logout (){
+        $session = new Session();
+        $session->clear('email');
+        return $this->redirect("/");
+    }
+
 
 
 

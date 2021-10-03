@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="{{ asset("css/addCustom.css") }}" rel="stylesheet">
+{{ parent() }}
+{% endblock %}
+{% block javascripts %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {{ parent() }}
+    <section class="get-in-touch">
+        <h1 class="title">Sayaç oluştur</h1>
+        <form action="/addCustom" class="contact-form row">
+            <div class="form-field col-lg-6">
+                <input id="name" class="input-text js-input" name="name" type="text" required>
+                <label class="label"  for="name">Sayaç Adı</label>
+            </div>
+            <div class="form-field col-lg-6 ">
+                <input id="email" class="input-text js-input"  name="firsText" type="text" required>
+                <label class="label"  for="firsText">İlk Cümle</label>
+            </div>
+            <div class="form-field col-lg-6 ">
+                <input id="company" class="input-text js-input"  name="lastText" type="text" required>
+                <label class="label" for="lastText">Son Cümle</label>
+            </div>
+            <div class="form-field col-lg-6 ">
+                <input id="message" name="dateTime" class="input-text js-input" type="datetime-local" required>
+            </div>
+            <div class="form-field col-lg-12">
+                <input class="submit-btn" type="submit" value="Gönder">
+            </div>
+        </form>
+    </section>
+{% endblock %}

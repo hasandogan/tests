@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+{% endblock %}
+{% block body %}
+    {{ parent() }}
+    <button type="button" onclick="window.location.href='/addCustomIndex'" style="margin-left:35%;width: 15%;" class="btn btn-primary">Ekle</button>
+    {% for row in data %}
+        <div class="container">
+            <div class="card mt-5 border-5 pt-2 active pb-0 px-3">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-12 ">
+                            <h4 class="card-title "><b>{{ row.name }}</b></h4>
+                        </div>
+                        <div class="col">
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                <p class="card-text text-muted small "><span class="vl mr-2 ml-0"></span> <span class="font-weight-bold"> </span> {{ row.dateTime|date }}</p>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-white px-0 ">
+                    <div class="row">
+                        <div class=" col-md-auto "> <a href="{{ row.user.id }}/{{ row.url }}" class="btn btn-outlined btn-black text-muted bg-transparent" data-wow-delay="0.7s"><img src="https://img.icons8.com/ios/50/000000/link.png" width="19" height="19"> <small>Herkese Açık Url</small></a></span> </div>
+                        <div class=" col-md-auto "> <a href="#" class="btn btn-outlined btn-black text-muted bg-transparent" data-wow-delay="0.7s"><img src="https://img.icons8.com/ios/50/000000/edit.png" width="19" height="19"> <small>Düzenle</small></a></span> </div>
+                        <div class=" col-md-auto "> <a href="#" class="btn btn-outlined btn-black text-muted bg-transparent" data-wow-delay="0.7s"><img src="https://img.icons8.com/ios/50/000000/delete.png" width="19" height="19"> <small>Sil</small></a></span> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
