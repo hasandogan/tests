@@ -19,27 +19,61 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="email" required class="form-control" name="email" type="email" placeholder="email">
+                            <input type="email" id="email"  class="form-control" name="email" type="email" placeholder="E-mail">
 
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input  type="password" class="form-control" name="password1" placeholder="password">
+                            <input  type="password" id="password1" class="form-control" name="password1" placeholder="Şifre" required>
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input  type="password" class="form-control" name="password2" placeholder="password">
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Register" class="btn float-right login_btn">
+                            <input  type="password" id="password2" class="form-control" name="password2" placeholder="Şifre" required>
                         </div>
                     </form>
+                    <div class="form-group">
+                        <input type="submit" id="register"  value="Kayıt Ol" class="btn float-right login_btn">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!--SweetAlert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+            $('#register').click(function (){
+                var email = $('#email').val();
+                var password1 = $('#password1').val();
+                var password2 = $('#password2').val();
+
+                if(email == ''   || password1 == '' || password2 == '' ){
+                    swal({
+                        title : "Alanlar Boş!!",
+                        text : "Boş Alanları Doldurunuz",
+                        icon : "warning",
+                        button : "Tamam"
+                    });
+                } else if (password1 != password2) {
+                    swal({
+                        title : "Şifreler Uyuşmamaktadır!!",
+                        text : "Girdiğiniz Şifreleri Kontrol Ediniz",
+                        icon : "warning",
+                        button : "Tamam"
+                    });
+                }else{
+                    swal({
+                        title : "Başarılı!!",
+                        text : "Başarılı Kayıt",
+                        icon : "success",
+                        button : "Tamam"
+                    });
+                }
+        });
+    </script>
+
 {% endblock %}
