@@ -19,7 +19,7 @@ class profileController extends AbstractController
     public function index(){
         $session = new Session();
         $entityManager = $this->getDoctrine()->getManager();
-        $customCheck = $entityManager->getRepository(CustomeCounter::class)->findBy(['user' => $session->get('id')]);
+        $customCheck = $entityManager->getRepository(CustomeCounter::class)->findBy(['user' => $session->get('id')],['id'=>'desc']);
         if ($session->get('email')){
             return $this->render('profile.html.twig',[
                 'data' => $customCheck
@@ -29,22 +29,7 @@ class profileController extends AbstractController
         }
     }
 
-    /**
-     * @Route ("/{id}/{slug}",name="counter")
-     */
-    public function showCustomCounter (string $slug){
-        $entityManager = $this->getDoctrine()->getManager();
-        $customCheck = $entityManager->getRepository(CustomeCounter::class)->findOneBy(['url' => $slug]);
-        if ($customCheck){
-        $session = new Session();
-        $custom = $entityManager->getRepository(CustomeCounter::class)->findOneBy(['user' => $session->get('id')]);
-        return $this->render('customCounter.html.twig', [
-            'data' => $custom,
-        ]);
-        }else{
-         return   $this->redirect("/");
-        }
-    }
+
 
     /**
      * @Route ("/addCustomIndex",name="addCustomIndex")
@@ -65,21 +50,57 @@ class profileController extends AbstractController
     public function addCustomCounter (Request $request){
         $session = new Session();
         $email = $session->get('email');
+
+
         if ($email){
             $entityManager = $this->getDoctrine()->getManager();
+            $user = $entityManager->getRepository(user::class)->findOneBy(['id' => $session->get('id')]);
+
+            $entityManager = $this->getDoctrine()->getManager();
             $dateTime = $request->get('dateTime');
+            $value = date("Y-m-d H:i:s", strtotime($dateTime));
             $url = uniqid();
             $custom = new CustomeCounter();
             $custom->setName($request->get('name'));
-            $custom->setTextFirst($request->get('firstText'));
+            $custom->setTextFirst($request->get('firsText'));
             $custom->setTextLast($request->get('lastText'));
-            $custom->setDateTime(date("y-m-d h:i:s",$dateTime));
+            $custom->setDateTime($value);
             $custom->setUrl($url);
+            $custom->setUser($user);
             $entityManager->persist($custom);
             $entityManager->flush();
-
+            return $this->redirect("/profile");
         }else{
             return $this->redirect("/login");
+        }
+    }
+
+    /**
+     * @Route ("/deleteCustom/{id}",name="delete")
+     */
+    public function deleteAction( $id){
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $customCheck = $entityManager->getRepository(CustomeCounter::class)->findOneBy(['id' => $id]);
+        $entityManager->remove($customCheck);
+        $entityManager->flush();
+
+        return $this->redirect("/profile");
+
+    }
+    /**
+     * @Route ("/{id}/{slug}",name="counter")
+     */
+    public function showCustomCounter (string $slug){
+        $entityManager = $this->getDoctrine()->getManager();
+        $customCheck = $entityManager->getRepository(CustomeCounter::class)->findOneBy(['url' => $slug]);
+        if ($customCheck){
+            $session = new Session();
+            return $this->render('customCounter.html.twig', [
+                'data' => $customCheck,
+            ]);
+        }else{
+            return   $this->redirect("/");
         }
     }
 

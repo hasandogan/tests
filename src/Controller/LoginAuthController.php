@@ -15,7 +15,6 @@ class LoginAuthController extends AbstractController
      **/
     public function loginAuthCeheck(Request $request)
     {
-
         $passwords = sha1($request->request->get('password'));
         $email = $request->get('email');
         $entityManager = $this->getDoctrine()->getManager();

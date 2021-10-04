@@ -46,8 +46,7 @@ class CustomeCounter
     private $textLast;
 
     /**
-     * @ORM\Column(type="datetime",nullable=false)
-     * @Assert\Type("datetime")
+     * @ORM\Column(type="datetime",nullable=false,type="string",length=300)
      */
     private $dateTime;
 
@@ -56,16 +55,20 @@ class CustomeCounter
         return $this->id;
     }
 
-    public function getUser(): ?User
+    /**
+     * @return mixed
+     */
+    public function getUser()
     {
         return $this->user;
     }
 
-    public function setUser(?User $user): self
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user): void
     {
         $this->user = $user;
-
-        return $this;
     }
 
     /**
@@ -85,19 +88,19 @@ class CustomeCounter
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getDateTime(): ?\DateTimeInterface
+    public function getDateTime()
     {
         return $this->dateTime;
     }
 
     /**
-     * @ORM\PrePersist
+     * @param mixed $dateTime
      */
-    public function setDateTime(\DateTimeInterface $date): void
+    public function setDateTime($dateTime): void
     {
-        $this->dateTime = $date;
+        $this->dateTime = $dateTime;
     }
 
     /**

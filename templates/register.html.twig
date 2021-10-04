@@ -69,12 +69,12 @@
                     $.ajax({
                         url: "/registerAuth",
                         type: "POST",
-                        data: {'email': email},
+                        data: {'email': email,'password1':password1,'password2':password2},
                         success:  function () {
                             swal("Kayıt başarıyla eklendi giriş ekranına yönlendiriliyorsunuz.");
                             setTimeout(_=> {
                                 window.location.replace("/login");
-                            }, 5000)
+                            }, 3000)
 
                         },
                         error: function (xhr, ajaxOptions, thrownError) {
