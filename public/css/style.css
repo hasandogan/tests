@@ -17,7 +17,7 @@ hr.new1 {
     /* Fallback color */
     background-color: rgba(0, 0, 0, 0.2);
     /* Black w/opacity/see-through */
-    border: 3px solid;
+    border-bottom: 3px solid;
 }
 
 .rainbow {
