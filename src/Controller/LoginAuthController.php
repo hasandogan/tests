@@ -34,7 +34,7 @@ class LoginAuthController extends AbstractController
     }
 
     /**
-     * @Route ("/registerAuth")
+     * @Route ("/registerAuth",name="registerAuth")
      **/
     public function registerAuth(Request $request)
     {

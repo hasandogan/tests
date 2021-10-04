@@ -50,7 +50,7 @@
                 var email = $('#email').val();
                 var password1 = $('#password1').val();
                 var password2 = $('#password2').val();
-
+                var serializedData = ($('#email').val(),$('#password1').val());
                 if(email == ''   || password1 == '' || password2 == '' ){
                     swal({
                         title : "Alanlar Boş!!",
@@ -66,11 +66,20 @@
                         button : "Tamam"
                     });
                 }else{
-                    swal({
-                        title : "Başarılı!!",
-                        text : "Başarılı Kayıt",
-                        icon : "success",
-                        button : "Tamam"
+                    $.ajax({
+                        url: "/registerAuth",
+                        type: "POST",
+                        data: {'email': email},
+                        success:  function () {
+                            swal("Kayıt başarıyla eklendi giriş ekranına yönlendiriliyorsunuz.");
+                            setTimeout(_=> {
+                                window.location.replace("/login");
+                            }, 5000)
+
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                        swal("Kayıt eklenemedi bu email adresi zaten kullanılmakta.");
+                    }
                     });
                 }
         });
