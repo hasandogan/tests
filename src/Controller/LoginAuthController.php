@@ -28,7 +28,7 @@ class LoginAuthController extends AbstractController
             $session->set('id', $userRepo->getId());
             return $this->redirect("/profile");
         } else {
-            return $this->redirect("/");
+            return $this->redirect("/login");
         }
     }
 
