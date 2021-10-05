@@ -1,7 +1,10 @@
 {% extends "base.html.twig" %}
     {% block head %}
         {{ parent() }}
-        <meta name="description" content="Seçim gününe kadar bir geri sayım aracı aynı zamanda döviz kurlarını efektif olarak gösteren bir web sitesi sürekli günce ve anlık bilgileri çekerek değerli ziyaretçilerimize en doğru bilgiyi göstermektedir" />
+        <title>Seçim Sayacı</title>
+        <meta name="description" content="Seçim gününe kadar bir geri sayım aracı, sürekli güncel ve anlık bilgileri çekerek değerli ziyaretçilerimize en doğru bilgiyi göstermektedir" />
+        <meta property="og:title" content="Seçim Sayacı" />
+        <meta property="og:description" content="Seçim Sayacı" />
     {% endblock %}
         {% block stylesheets %}
             {{ parent() }}

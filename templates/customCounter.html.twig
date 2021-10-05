@@ -2,6 +2,9 @@
     {% block head %}
         <title>{{ data.name }}</title>
         {{ parent() }}
+        <title>{{ data.name }}</title>
+        <meta property="og:title" content="{{ data.name }}" />
+        <meta property="og:description" content="{{ data.name }}" />
 
     {% endblock %}
         {% block stylesheets %}
@@ -11,10 +14,10 @@
  {% block javascripts %}
      {{ parent() }}
      <script>
-     var countDownDate = new Date(" {{ data.dateTime|date("F d, Y h:i:s") }} ").getTime();
-     var x = setInterval(function() {
 
-     var now = new Date().getTime();
+     var countDownDate = new Date(" {{ data.dateTime|date("F d, Y H:i:s") }} ").getTime();
+     var x = setInterval(function() {
+         var now = new Date().getTime();
 
      var distance = countDownDate - now;
      var newYear = "{{ data.textFirst }} "
