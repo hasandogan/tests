@@ -22,14 +22,11 @@ class LoginAuthController extends AbstractController
             'email' => $email,
             'password' => $passwords
         ]);
-        if ($userRepo) {
             $session = new Session();
             $session->set('email', $email);
             $session->set('id', $userRepo->getId());
             return $this->redirect("/profile");
-        } else {
-            return $this->redirect("/login");
-        }
+
     }
 
     /**
