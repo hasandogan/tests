@@ -46,6 +46,11 @@ class CustomeCounter
     private $textLast;
 
     /**
+     * @ORM\Column(type="string", length=300,options={"default" : 0})
+     */
+    private $likeCount;
+
+    /**
      * @ORM\Column(type="datetime",nullable=false,type="string",length=300)
      */
     private $dateTime;
@@ -133,6 +138,22 @@ class CustomeCounter
     public function setTextLast($textLast): void
     {
         $this->textLast = $textLast;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLikeCount()
+    {
+        return $this->likeCount;
+    }
+
+    /**
+     * @param mixed $likeCount
+     */
+    public function setLikeCount($likeCount): void
+    {
+        $this->likeCount = $likeCount;
     }
 
     /**

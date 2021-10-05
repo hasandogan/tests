@@ -1,6 +1,10 @@
 {% extends "base.html.twig" %}
     {% block head %}
+        <title>{{ data.name }}</title>
         {{ parent() }}
+        <link href="{{ asset("scss/socialites.scss") }}" rel="stylesheet" id="bootstrap-css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" id="bootstrap-css">
+
     {% endblock %}
         {% block stylesheets %}
             {{ parent() }}
@@ -40,4 +44,13 @@
         <div id="shadowBox">
             <p lang="tr" class="rainbow rainbow_text_animated" id="demo"></p>
         </div>
+
+    <div class="flex-center">
+        <a href="https://twitter.com/share?url=https://scmsayac.xyz/public/{{ data.url }}&text=Bu Sayacı Görmelisiniz"><i class="fa fa-twitter fa-2x icon-3d"></i></a>
+        <i class="fa fa-facebook fa-2x icon-3d"></i>
+        <i class="fa fa-instagram fa-2x icon-3d"></i>
+        <i class="fa fa-whatsapp fa-2x icon-3d"></i>
+    </div>
+
+
 {% endblock %}

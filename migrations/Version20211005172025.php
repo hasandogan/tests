@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20211002200054 extends AbstractMigration
+final class Version20211005172025 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,13 +20,14 @@ final class Version20211002200054 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE custome_counter (id INT AUTO_INCREMENT NOT NULL, member_id_id INT NOT NULL, url VARCHAR(300) NOT NULL, UNIQUE INDEX UNIQ_EBA7D82DF47645AE (url), INDEX IDX_EBA7D82D1D650BA4 (member_id_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('ALTER TABLE custome_counter ADD CONSTRAINT FK_EBA7D82D1D650BA4 FOREIGN KEY (member_id_id) REFERENCES user (id)');
+        $this->addSql('ALTER TABLE custome_counter ADD like_count VARCHAR(300) DEFAULT \'0\' NOT NULL');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_8D93D64924A232CF ON user (user_name)');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('DROP TABLE custome_counter');
+        $this->addSql('ALTER TABLE custome_counter DROP like_count');
+        $this->addSql('DROP INDEX UNIQ_8D93D64924A232CF ON user');
     }
 }

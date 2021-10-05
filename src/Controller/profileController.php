@@ -67,6 +67,7 @@ class profileController extends AbstractController
             $custom->setDateTime($value);
             $custom->setUrl($url);
             $custom->setUser($user);
+            $custom->setLikeCount(0);
             $entityManager->persist($custom);
             $entityManager->flush();
             return $this->redirect("/profile");

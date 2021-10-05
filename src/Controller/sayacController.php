@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\CustomeCounter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -10,7 +11,24 @@ class sayacController extends AbstractController
 {
 
     /**
-     * @Route("/",name="secim-sayaci")
+     * @Route("/", name="index")
+     */
+    public function index(){
+        return $this->render('index.html.twig', ['data'=>$this->indexData()]);
+
+    }
+
+    /**
+     * @Route ("/getIndexData",name="getIndexData")
+     */
+    public function indexData(){
+        $entityManager = $this->getDoctrine()->getManager();
+        $customCheck = $entityManager->getRepository(CustomeCounter::class)->findlastfivecustomeCounter();
+        return $customCheck;
+    }
+
+    /**
+     * @Route("/secim",name="secim-sayaci")
      */
     public function secimSayaci(){
         return $this->render('sayac.html.twig');

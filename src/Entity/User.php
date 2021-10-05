@@ -20,9 +20,14 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
+     * @ORM\Column(type="string", length=50, unique=true)
      */
     private $email;
+
+    /**
+     * @ORM\Column(type="string", length=50, unique=true)
+     */
+    private $userName;
 
     /**
      * @var string The hashed password
@@ -45,34 +50,36 @@ class User
         return $this->id;
     }
 
-    public function getEmail(): ?string
+    /**
+     * @return mixed
+     */
+    public function getEmail()
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email): void
     {
         $this->email = $email;
-
-        return $this;
     }
 
     /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
+     * @return mixed
      */
-    public function getUserIdentifier(): string
+    public function getUserName()
     {
-        return (string) $this->email;
+        return $this->userName;
     }
 
     /**
-     * @deprecated since Symfony 5.3, use getUserIdentifier instead
+     * @param mixed $userName
      */
-    public function getUsername(): string
+    public function setUserName($userName): void
     {
-        return (string) $this->email;
+        $this->userName = $userName;
     }
 
     /**

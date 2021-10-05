@@ -47,4 +47,12 @@ class CustomeCounterRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findlastfivecustomeCounter(){
+        return $this->createQueryBuilder('c')
+            ->orderBy('c.id', 'desc')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult();
+    }
 }

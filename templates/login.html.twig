@@ -31,11 +31,11 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Şifre">
+                            <input type="password" class="form-control" autocomplete="off" id="password" name="password" placeholder="Şifre">
                         </div>
                     </form>
                     <div class="form-group">
-                        <input type="submit" id="login" value="Giriş" class="btn float-right login_btn">
+                        <button type="button" id="login" class="btn btn-primary">Giriş</button>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                     type: "POST",
                     data: {'email': email,'password':password},
                     success:  function () {
-                        swal("Başarıyla Giriş Yapıldı.");
+                        swal("Başarıyla Giriş Yapıldı. Yönlendiriliyorsunuz lütfen bekleyin.");
                         setTimeout(_=> {
                             window.location.replace("/profile");
                         }, 3000)

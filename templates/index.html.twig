@@ -1,0 +1,60 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href='{{ asset("css/split.css") }}' rel='stylesheet'/>
+    <style>
+        .custom-card {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            position: center;
+        }
+        .custom-card-title {
+            font-size: 30px;
+        }
+        .custom-card .custom-card-line {
+            padding: 10px;
+            margin-bottom: 20px;
+            background: #ccc;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="left-side">
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="right-side">
+                    <div class="custom-card">
+                        <div class="custom-card-title">
+                            En son Eklenen sayaçlar
+                        </div>
+                        {% for row in data %}
+                            <div class="custom-card-line">
+                            <div class=" col-md-auto "><a href="/public/{{ row.url }}" class="btn btn-outlined btn-black text-muted bg-transparent" data-wow-delay="0.7s"><img src="https://img.icons8.com/material-outlined/24/000000/employee-card.png" width="19" height="19"> <small>{{ row.name }}</small></a><a href="/public/{{ row.url }}" class="btn btn-outlined btn-black text-muted bg-transparent" data-wow-delay="0.7s"><img src="https://img.icons8.com/ios/50/000000/link.png" width="19" height="19"> <small>Sayaç Linki</small></a></span><a href="/public/{{ row.url }}"" class="btn btn-outlined btn-black text-muted bg-transparent" data-wow-delay="0.7s"><img src="https://img.icons8.com/color/48/000000/name--v1.png" width="19" height="19"> <small>{{ row.user.username }}</small></a> </div>
+                        </div>
+                    {% endfor %}
+
+                    </div>
+                    <div class="custom-card">
+                        <div class="custom-card-title">
+                            En Çok Beğenilen sayaçlar
+                        </div>
+                        {% for row in data %}
+
+                        <div class="custom-card-line">
+                            <div class=" col-md-auto "><a href="/public/{{ row.url }}" class="btn btn-outlined btn-black text-muted bg-transparent" data-wow-delay="0.7s"><img src="https://img.icons8.com/material-outlined/24/000000/employee-card.png" width="19" height="19"> <small>{{ row.name }}</small></a><a href="/public/{{ row.url }}" class="btn btn-outlined btn-black text-muted bg-transparent" data-wow-delay="0.7s"><img src="https://img.icons8.com/ios/50/000000/link.png" width="19" height="19"> <small>Sayaç Linki</small></a></span><a href="/public/{{ row.url }}"" class="btn btn-outlined btn-black text-muted bg-transparent" data-wow-delay="0.7s"><img src="https://img.icons8.com/color/48/000000/name--v1.png" width="19" height="19"> <small>{{ row.user.username }}</small></a><a href="" class="btn btn-outlined btn-black text-muted bg-transparent" data-wow-delay="0.7s"><img src="https://img.icons8.com/external-prettycons-lineal-color-prettycons/49/000000/external-like-essentials-prettycons-lineal-color-prettycons.png" width="19" height="19"> <small>{{ row.likeCount }}</small></a> </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ {% endblock %}

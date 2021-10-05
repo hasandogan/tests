@@ -40,6 +40,7 @@ class LoginAuthController extends AbstractController
             $user = new User ();
             $user->setEmail($request->request->get('email'));
             $user->setPassword($password1);
+            $user->setUserName($request->request->get('userName'));
             $this->getDoctrine()->getManager()->persist($user);
             $this->getDoctrine()->getManager()->flush();
             return $this->redirect("/login");
