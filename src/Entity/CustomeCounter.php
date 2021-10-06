@@ -14,7 +14,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *
  * @ApiResource(
  *     collectionOperations={"get"={"normalization_context"={"groups"="CustomeCounter:list"}}},
- *     itemOperations={"get"={"normalization_context"={"groups"="CustomeCounter:item"}}},
+ *      itemOperations={
+ *          "get"={
+ *              "normalization_context"={"groups"={"cheese_listing:read", "cheese_listing:item:get"}},
+ *          },
+ *          "put"
+ *     },
  *     paginationEnabled=false
  * )
  */
