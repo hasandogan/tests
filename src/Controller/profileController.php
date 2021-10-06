@@ -89,9 +89,7 @@ class profileController extends AbstractController
         return $this->redirect("/profile");
 
     }
-    /**
-     * @Route ("/{id}/{slug}",name="counter")
-     */
+ 
     public function showCustomCounter (string $slug){
         $entityManager = $this->getDoctrine()->getManager();
         $customCheck = $entityManager->getRepository(CustomeCounter::class)->findOneBy(['url' => $slug]);
