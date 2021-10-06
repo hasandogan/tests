@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class User
@@ -36,7 +37,7 @@ class User
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity=CustomeCounter::class, mappedBy="CustomCounter")
+     * @ORM\OneToMany(targetEntity=CustomeCounter::class, mappedBy="user")
      */
     private $memberId;
 
