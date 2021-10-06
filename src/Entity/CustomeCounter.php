@@ -16,7 +16,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     collectionOperations={"get"={"normalization_context"={"groups"="CustomeCounter:list"}}},
  *      itemOperations={
  *          "get"={
- *              "normalization_context"={"groups"={"cheese_listing:read", "cheese_listing:item:get"}},
+ *              "normalization_context"={"groups"={"CustomeCounter:read", "CustomeCounter:item:get"}},
  *          },
  *          "put"
  *     },
