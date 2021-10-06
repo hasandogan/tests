@@ -13,16 +13,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Entity(repositoryClass=CustomeCounterRepository::class)
  * @ORM\HasLifecycleCallbacks()
  *
- * @ApiResource(
- *     collectionOperations={"get"={"normalization_context"={"groups"="CustomeCounter:list"}}},
- *      itemOperations={
- *          "get"={
- *              "normalization_context"={"groups"={"CustomeCounter:read", "CustomeCounter:item:get"}},
- *          },
- *          "put"
- *     },
- *     paginationEnabled=false
- * )
  */
 class CustomeCounter
 {
@@ -36,43 +26,36 @@ class CustomeCounter
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="memberId")
      * @ORM\JoinColumn(nullable=false)
-        #[Groups(['CustomeCounter:list', 'CustomeCounter:item'])]   
       */
     private $user;
 
     /**
      * @ORM\Column(type="string", length=300, unique=true)
-     #[Groups(['CustomeCounter:list', 'CustomeCounter:item'])]
      */
     private $url;
 
     /**
      * @ORM\Column(type="string", length=300,nullable=false)
-       #[Groups(['CustomeCounter:list', 'CustomeCounter:item'])]
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=300,nullable=true)
-       #[Groups(['CustomeCounter:list', 'CustomeCounter:item'])]
      */
     private $textFirst;
 
     /**
      * @ORM\Column(type="string", length=300,nullable=true)
-       #[Groups(['CustomeCounter:list', 'CustomeCounter:item'])]
      */
     private $textLast;
 
     /**
      * @ORM\Column(type="string", length=300,options={"default" : 0})
-       #[Groups(['CustomeCounter:list', 'CustomeCounter:item'])]
      */
     private $likeCount;
 
     /**
      * @ORM\Column(type="datetime",nullable=false,type="string",length=300)
-       #[Groups(['CustomeCounter:list', 'CustomeCounter:item'])]
      */
     private $dateTime;
 
