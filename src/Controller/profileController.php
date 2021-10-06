@@ -90,7 +90,7 @@ class profileController extends AbstractController
 
     }
        /**
-     * @Route ("/{id}/{slug}",name="counter")
+     * @Route ("/public/{slug}",name="counter")
      */
     public function showCustomCounter (string $slug){
         $entityManager = $this->getDoctrine()->getManager();
