@@ -11,11 +11,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource(
+ *     normalizationContext={"groups"={"custome_counter:read"}, "swagger_definition_name"="Read"}
+ * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class User
 {
     /**
+     * @Groups({"custome_counter:read", "custome_counter:write"})
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -23,11 +27,13 @@ class User
     private $id;
 
     /**
+     * @Groups({"custome_counter:read", "custome_counter:write"})
      * @ORM\Column(type="string", length=50, unique=true)
      */
     private $email;
 
     /**
+     * @Groups({"custome_counter:read", "custome_counter:write"})
      * @ORM\Column(type="string", length=50, unique=true)
      */
     private $userName;
@@ -39,6 +45,7 @@ class User
     private $password;
 
     /**
+     * @Groups({"custome_counter:read", "custome_counter:write"})
      * @ORM\OneToMany(targetEntity=CustomeCounter::class, mappedBy="user")
      */
     private $memberId;
