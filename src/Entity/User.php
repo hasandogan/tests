@@ -12,14 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource(
- *     normalizationContext={"groups"={"custome_counter:read"}, "swagger_definition_name"="Read"}
+ *     normalizationContext={"groups"={"user:read"}, "swagger_definition_name"="Read"}
  * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class User
 {
     /**
-     * @Groups({"custome_counter:read", "custome_counter:write"})
+     * @Groups({"user:read", "user:write"})
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
@@ -27,13 +27,13 @@ class User
     private $id;
 
     /**
-     * @Groups({"custome_counter:read", "custome_counter:write"})
+     * @Groups({"user:read", "user:write"})
      * @ORM\Column(type="string", length=50, unique=true)
      */
     private $email;
 
     /**
-     * @Groups({"custome_counter:read", "custome_counter:write"})
+     * @Groups({"user:read", "user:write"})
      * @ORM\Column(type="string", length=50, unique=true)
      */
     private $userName;
@@ -45,7 +45,7 @@ class User
     private $password;
 
     /**
-     * @Groups({"custome_counter:read", "custome_counter:write"})
+     * @Groups({"user:read", "user:write"})
      * @ORM\OneToMany(targetEntity=CustomeCounter::class, mappedBy="user")
      */
     private $memberId;
