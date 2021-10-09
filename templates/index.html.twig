@@ -1,22 +1,9 @@
 {% extends "base.html.twig" %}
 {% block stylesheets %}
+    <title>Geri sayım Makinesi</title>
     {{ parent() }}
-    <style>
-        .custom-card {
-            margin: 10px 0;
-            display: flex;
-            flex-direction: column;
-            position: center;
-        }
-        .custom-card-title {
-            font-size: 30px;
-        }
-        .custom-card .custom-card-line {
-            padding: 10px;
-            margin-bottom: 20px;
-            background: #ccc;
-        }
-    </style>
+    <meta name="description" content="Seçim sayacı,Yıl Başı Sayacı gibi hazır olan sayaçları görüntüleyebilir veya istediğiniz gibi kendinize bir sayaç oluşturabilirsiniz oluşturduğunuz bu sayaçları arkadaşlarınız ile paylaşabilirsiniz."/>
+    <link rel="stylesheet" href="{{asset("css/indexCss.css") }}"
 {% endblock %}
 {% block body %}
     {{ parent() }}

@@ -1,0 +1,14 @@
+.custom-card {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    position: center;
+}
+.custom-card-title {
+    font-size: 30px;
+}
+.custom-card .custom-card-line {
+    padding: 10px;
+    margin-bottom: 20px;
+    background: #ccc;
+}
