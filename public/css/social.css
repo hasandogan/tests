@@ -2,14 +2,14 @@
 
 .buttons {
     position: absolute;
-    top: 50%;
-    left: 40%;
+    top: 70%;
+    left: 45%;
 }
 
 .button {
     float: left;
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
     background: #ffffff;
     overflow: hidden;
@@ -21,14 +21,14 @@
 }
 
 .button span {
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 60px;
-    margin-left: 10px;
+    font-size: 10px;
+    font-weight: 250;
+    line-height: 30px;
+    margin-left: 5px;
 }
 
 .button:hover {
-    width: 200px;
+    width: 100px;
 }
 
 .button:nth-child(1):hover .icon {
@@ -80,17 +80,17 @@
 }
 
 .button .icon {
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     text-align: center;
-    border-radius: 50px;
+    border-radius: 25px;
     display: inline-block;
     transition: all 0.3s ease-in-out;
 }
 
 .button .icon i {
-    font-size: 25px;
-    line-height: 60px;
+    font-size: 12.5px;
+    line-height: 30px;
     transition: all 0.3s ease-in-out;
 }
 
