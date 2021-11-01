@@ -11,9 +11,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource(
- *     normalizationContext={"groups"={"user:read"}, "swagger_definition_name"="Read"}
- * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class User

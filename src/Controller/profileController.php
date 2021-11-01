@@ -20,7 +20,7 @@ class profileController extends AbstractController
         $session = new Session();
         $entityManager = $this->getDoctrine()->getManager();
         $customCheck = $entityManager->getRepository(CustomeCounter::class)->findBy(['user' => $session->get('id')],['id'=>'desc']);
-        if ($session->get('email')){
+        if ($session->get('id') != null){
             return $this->render('profile.html.twig',[
                 'data' => $customCheck
             ]);
@@ -36,8 +36,8 @@ class profileController extends AbstractController
      */
     public function addCustomCounterAction (){
         $session = new Session();
-        $email = $session->get('email');
-        if ($email){
+        $id = $session->get('id');
+        if ($id != null){
             return $this->render('addCustom.html.twig');
         }else{
             return $this->redirect("/login");
@@ -49,12 +49,12 @@ class profileController extends AbstractController
      */
     public function addCustomCounter (Request $request){
         $session = new Session();
-        $email = $session->get('email');
+        $id = $session->get('id');
 
 
-        if ($email){
+        if ($id != null){
             $entityManager = $this->getDoctrine()->getManager();
-            $user = $entityManager->getRepository(user::class)->findOneBy(['id' => $session->get('id')]);
+            $user = $entityManager->getRepository(user::class)->findOneBy(['id' => $id]);
 
             $entityManager = $this->getDoctrine()->getManager();
             $dateTime = $request->get('dateTime');
@@ -100,5 +100,7 @@ class profileController extends AbstractController
                 'data' => $customCheck,
             ]);
     }
+
+
 
 }
