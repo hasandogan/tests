@@ -18,9 +18,10 @@ class ApiController extends AbstractController
      */
     public function getUserAtuh(Request $request) {
 
+        $parameter = json_decode($request->getContent(),true);
+        $passwords = sha1($parameter['password']);
+        $email = $parameter['email'];
 
-        $passwords = sha1($request->get('password'));
-        $email = $request->get('email');
         $entityManager = $this->getDoctrine()->getManager();
         $userRepo = $entityManager->getRepository(User::class)->findOneBy([
             'email' => $email,
