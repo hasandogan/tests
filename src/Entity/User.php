@@ -47,6 +47,11 @@ class User
      */
     private $memberId;
 
+    /**
+     * @ORM\Column(type="string", length=300,nullable=true)
+     */
+    private  $role;
+
     public function __construct()
     {
         $this->memberId = new ArrayCollection();
@@ -103,6 +108,23 @@ class User
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param mixed $role
+     */
+    public function setRole($role): void
+    {
+        $this->role = $role;
+    }
+
 
     /**
      * Returning a salt is only needed, if you are not using a modern
