@@ -28,7 +28,19 @@ class ApiController extends AbstractController
             'password' => $passwords
         ]);
 
-        if ($userRepo != null){
+            if ($userRepo != null){
+                 $clientRepo = $entityManager->getRepository(Client::class)->findOneBy([
+                 'userId' => $userRepo->getId(),
+            ]);
+            if($clientRepo != null){
+                 $clientArray = ['token' => $clientRepo->getToken(), 'user' => [
+                'username' => $userRepo->getUserName(),
+                'email' => $userRepo->getEmail(),
+                'id' => $userRepo->getId(),
+                'role' => $userRepo->getRole()
+            ]];
+            return  new Response(json_encode($clientArray));
+            }
             $bytes = random_bytes(20);
             $token = bin2hex($bytes);
             $client = new Client();
