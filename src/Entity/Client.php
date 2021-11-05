@@ -8,8 +8,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 
 /**
- * @ORM\Entity(repositoryClass=ClientRepository::class)
- */ 
+@ORM\Entity(repositoryClass="App\Repository\ClientRepository")
+*/ 
 class Client
 {
     /**
