@@ -3,14 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\ClientRepository;
+use App\Repository\ClientsRepository;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 
 /**
-@ORM\Entity(repositoryClass="App\Repository\ClientRepository")
+@ORM\Entity(repositoryClass="App\Repository\ClientsRepository")
 */ 
-class Client
+class Clients
 {
     /**
      * @ORM\Id
