@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Client;
+use App\Entity\Clients;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,7 +29,7 @@ class ApiController extends AbstractController
         ]);
 
             if ($userRepo != null){
-                 $clientRepo = $entityManager->getRepository(Client::class)->findOneBy([
+                 $clientRepo = $entityManager->getRepository(Clients::class)->findOneBy([
                  'userId' => $userRepo->getId(),
             ]);
             if($clientRepo != null){
@@ -43,7 +43,7 @@ class ApiController extends AbstractController
             }
             $bytes = random_bytes(20);
             $token = bin2hex($bytes);
-            $client = new Client();
+            $client = new Clients();
             $client->setToken($token);
             if ($userRepo->getRole() != null)
             {$client->setRole($userRepo->getRole());}
