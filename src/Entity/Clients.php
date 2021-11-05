@@ -9,6 +9,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
 @ORM\Entity
+@ORM\Table(name="client")
 @ORM\Entity(repositoryClass="App\Repository\ClientsRepository")
 */ 
 class Clients
