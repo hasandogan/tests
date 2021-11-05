@@ -3,13 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\ClientsRepository;
+use App\Repository\ClientsTokkenRepository;
 
 
 /**
-@ORM\Entity(repositoryClass="App\Repository\ClientsRepository")
+@ORM\Entity(repositoryClass="App\Repository\ClientsTokkenRepository")
 */ 
-class Clients
+class ClientsTokken
 {
     /**
      * @ORM\Id
