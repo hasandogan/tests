@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Clients;
+use App\Entity\CustomeCounter;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -61,6 +62,37 @@ class ApiController extends AbstractController
             return new Response(json_encode(['error' => 'user not found']));
         }
 
+    }
+
+    /**
+     * @Route ("api/getLogout")
+     */
+    public function logoutAuth(Request $request){
+        $parameter = json_decode($request->getContent(),true);
+        $token = $parameter['token'];
+        $entityManager = $this->getDoctrine()->getManager();
+        $tokenRepo = $entityManager->getRepository(Clients::class)->findOneBy(['token' => $token]);
+        $entityManager->remove($tokenRepo);
+        $entityManager->flush();
+            return new Response('session end');
+
+    }
+
+    /**
+     * @Route ("api/getCountDown")
+     */
+    public function countDown(Request $request){
+        $parameter = json_decode($request->getContent(),true);
+        $token = $parameter['token'];
+        $entityManager = $this->getDoctrine()->getManager();
+        $tokenRepo = $entityManager->getRepository(Clients::class)->findOneBy(['token' => $token]);
+        $user = $entityManager->getRepository(User::class)->findOneBy(['id' => $tokenRepo->getUserId()]);
+        $counter = $entityManager->getRepository(CustomeCounter::class)->findBy(['user' => $user]);
+        $counterArray = [];
+        foreach ($counter as $count ){
+            $counterArray[] = ['id' => $count->getId(),'userId' => $count->getUser()->getId(),'name' => $count->getName(),'firstText' => $count->getTextFirst(),'lastText' => $count -> getTextLast(),'dateTime' => $count ->getDateTime()];
+        }
+        return new Response(json_encode($counterArray));
     }
 
 }
