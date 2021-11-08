@@ -28,7 +28,15 @@
             <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D6XSLK8WY"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
             <script src="{{ asset("js/jquery_3.5.1_jquery.js") }}"></script>
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-BVCGJW43RG"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
 
+                gtag('config', 'G-BVCGJW43RG');
+            </script>
         {% endblock %}
     </head>
     <body style="background-color:black;">
