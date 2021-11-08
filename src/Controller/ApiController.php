@@ -110,7 +110,7 @@ class ApiController extends AbstractController
         /**
      * @Route ("api/getCountById")
      */
-    public function countDown(Request $request){
+    public function countDownById(Request $request){
         $parameter = json_decode($request->getContent(),true);
         $id = $parameter['id'];
         $entityManager = $this->getDoctrine()->getManager();
