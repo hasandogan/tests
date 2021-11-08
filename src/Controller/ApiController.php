@@ -95,7 +95,7 @@ class ApiController extends AbstractController
         return new Response(json_encode($counterArray));
     }
      /**
-     * @Route ("api/lastCounter",name="getIndexData")
+     * @Route ("api/lastCounter")
      */
     public function indexData(){
         $entityManager = $this->getDoctrine()->getManager();
