@@ -94,6 +94,7 @@ class ApiController extends AbstractController
         }
         return new Response(json_encode($counterArray));
     }
+    
      /**
      * @Route ("api/lastCounter")
      */
@@ -101,6 +102,19 @@ class ApiController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $customCheck = $entityManager->getRepository(CustomeCounter::class)->findlastfivecustomeCounter();
          foreach ($customCheck as $count ){
+            $counterArray[] = ['id' => $count->getId(),'userId' => $count->getUser()->getId(),'name' => $count->getName(),'firstText' => $count->getTextFirst(),'lastText' => $count -> getTextLast(),'dateTime' => $count ->getDateTime()];
+        }
+        return new Response(json_encode($counterArray));
+    }
+    
+    /**
+     * @Route ("api/getCountDown/{id}")
+     */
+    public function countDownId(){
+        $entityManager = $this->getDoctrine()->getManager();
+        $counter = $entityManager->getRepository(CustomeCounter::class)->findBy(['id' => $id]);
+        $counterArray = [];
+        foreach ($counter as $count ){
             $counterArray[] = ['id' => $count->getId(),'userId' => $count->getUser()->getId(),'name' => $count->getName(),'firstText' => $count->getTextFirst(),'lastText' => $count -> getTextLast(),'dateTime' => $count ->getDateTime()];
         }
         return new Response(json_encode($counterArray));
