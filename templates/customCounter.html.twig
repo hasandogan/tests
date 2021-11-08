@@ -18,8 +18,13 @@
      var countDownDate = new Date(" {{ data.dateTime|date("F d, Y H:i:s") }} ").getTime();
      var x = setInterval(function() {
          var now = new Date().getTime();
-
-     var distance = countDownDate - now;
+         if (countDownDate < now) {
+             console.log("girdi");
+             var distance = now - countDownDate;
+         }else{
+             console.log("girdi2");
+             var distance = countDownDate - now;
+         }
      var newYear = "{{ data.textFirst }} "
      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
