@@ -113,8 +113,11 @@ class ApiController extends AbstractController
     public function countDownById(Request $request){
         $parameter = json_decode($request->getContent(),true);
         $id = $parameter['id'];
+                        var_dump($id);
         $entityManager = $this->getDoctrine()->getManager();
           $counter = $entityManager->getRepository(CustomeCounter::class)->findOneBy(['id' => $id]);
+                var_dump($counter);
+
           $counterArray = [];
             foreach ($counter as $count ){
                 $counterArray[] = ['id' => $count->getId(),'userId' => $count->getUser()->getId(),'name' => $count->getName(),'firstText' => $count->getTextFirst(),'lastText' => $count -> getTextLast(),'dateTime' => $count ->getDateTime()];
