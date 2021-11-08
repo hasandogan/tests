@@ -107,17 +107,30 @@ class ApiController extends AbstractController
         return new Response(json_encode($counterArray));
     }
     
-    /**
-     * @Route ("api/getCountDown/{id}")
+        /**
+     * @Route ("api/getCountById")
      */
-    public function countDownId(){
+    public function countDown(Request $request){
+        $parameter = json_decode($request->getContent(),true);
+        $token = $parameter['token'];
+        $id = $parameter['id'];
         $entityManager = $this->getDoctrine()->getManager();
-        $counter = $entityManager->getRepository(CustomeCounter::class)->findBy(['id' => $id]);
-        $counterArray = [];
-        foreach ($counter as $count ){
-            $counterArray[] = ['id' => $count->getId(),'userId' => $count->getUser()->getId(),'name' => $count->getName(),'firstText' => $count->getTextFirst(),'lastText' => $count -> getTextLast(),'dateTime' => $count ->getDateTime()];
+        $tokenRepo = $entityManager->getRepository(Clients::class)->findOneBy(['token' => $token]);
+        if($tokenRepo != null ){
+          $counter = $entityManager->getRepository(CustomeCounter::class)->findBy(['id' => $id]);
+          $counterArray = [];
+            foreach ($counter as $count ){
+                $counterArray[] = ['id' => $count->getId(),'userId' => $count->getUser()->getId(),'name' => $count->getName(),'firstText' => $count->getTextFirst(),'lastText' => $count -> getTextLast(),'dateTime' => $count ->getDateTime()];
+            }
+          return new Response(json_encode($counterArray));
+        }else{
+          return new Response('user not Found');
         }
-        return new Response(json_encode($counterArray));
+      
     }
+    
+    
+    
+    
 
 }
