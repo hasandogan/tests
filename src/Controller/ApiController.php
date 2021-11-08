@@ -103,7 +103,7 @@ class ApiController extends AbstractController
          foreach ($customCheck as $count ){
             $counterArray[] = ['id' => $count->getId(),'userId' => $count->getUser()->getId(),'name' => $count->getName(),'firstText' => $count->getTextFirst(),'lastText' => $count -> getTextLast(),'dateTime' => $count ->getDateTime()];
         }
-        return new Response(json_encode($customCheck))
+        return new Response(json_encode($customCheck));
     }
 
 }
