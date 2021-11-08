@@ -97,7 +97,7 @@ class ApiController extends AbstractController
      /**
      * @Route ("api/lastCounter")
      */
-    public function indexData(){
+    public function indexData(Request $request){
         $entityManager = $this->getDoctrine()->getManager();
         $customCheck = $entityManager->getRepository(CustomeCounter::class)->findlastfivecustomeCounter();
          foreach ($customCheck as $count ){
