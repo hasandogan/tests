@@ -94,5 +94,16 @@ class ApiController extends AbstractController
         }
         return new Response(json_encode($counterArray));
     }
+     /**
+     * @Route ("api/lastCounter",name="getIndexData")
+     */
+    public function indexData(){
+        $entityManager = $this->getDoctrine()->getManager();
+        $customCheck = $entityManager->getRepository(CustomeCounter::class)->findlastfivecustomeCounter();
+         foreach ($customCheck as $count ){
+            $counterArray[] = ['id' => $count->getId(),'userId' => $count->getUser()->getId(),'name' => $count->getName(),'firstText' => $count->getTextFirst(),'lastText' => $count -> getTextLast(),'dateTime' => $count ->getDateTime()];
+        }
+        return new Response(json_encode($customCheck))
+    }
 
 }
