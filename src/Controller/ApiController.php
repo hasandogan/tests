@@ -112,20 +112,14 @@ class ApiController extends AbstractController
      */
     public function countDown(Request $request){
         $parameter = json_decode($request->getContent(),true);
-        $token = $parameter['token'];
         $id = $parameter['id'];
         $entityManager = $this->getDoctrine()->getManager();
-        $tokenRepo = $entityManager->getRepository(Clients::class)->findOneBy(['token' => $token]);
-        if($tokenRepo != null ){
-          $counter = $entityManager->getRepository(CustomeCounter::class)->findBy(['id' => $id]);
+          $counter = $entityManager->getRepository(CustomeCounter::class)->findOneBy(['id' => $id]);
           $counterArray = [];
             foreach ($counter as $count ){
                 $counterArray[] = ['id' => $count->getId(),'userId' => $count->getUser()->getId(),'name' => $count->getName(),'firstText' => $count->getTextFirst(),'lastText' => $count -> getTextLast(),'dateTime' => $count ->getDateTime()];
             }
           return new Response(json_encode($counterArray));
-        }else{
-          return new Response('user not Found');
-        }
       
     }
     
