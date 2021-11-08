@@ -119,6 +119,7 @@ class ApiController extends AbstractController
             foreach ($counter as $count ){
                 $counterArray[] = ['id' => $count->getId(),'userId' => $count->getUser()->getId(),'name' => $count->getName(),'firstText' => $count->getTextFirst(),'lastText' => $count -> getTextLast(),'dateTime' => $count ->getDateTime()];
             }
+        dd($counterArray);
           return new Response(json_encode($counterArray));
       
     }
