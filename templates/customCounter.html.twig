@@ -19,10 +19,8 @@
      var x = setInterval(function() {
          var now = new Date().getTime();
          if (countDownDate < now) {
-             console.log("girdi");
              var distance = now - countDownDate;
          }else{
-             console.log("girdi2");
              var distance = countDownDate - now;
          }
      var newYear = "{{ data.textFirst }} "
