@@ -50,8 +50,6 @@ class profileController extends AbstractController
     public function addCustomCounter (Request $request){
         $session = new Session();
         $id = $session->get('id');
-
-
         if ($id != null){
             $entityManager = $this->getDoctrine()->getManager();
             $user = $entityManager->getRepository(user::class)->findOneBy(['id' => $id]);

@@ -2,9 +2,9 @@
     {% block head %}
         {{ parent() }}
         <title>{% block title %}{{ data.name }}{% endblock %}</title>
-        <title>{{ data.name }}</title>
         <meta property="og:title" content="{{ data.name }}" />
         <meta property="og:description" content="{{ data.name }}" />
+        <meta name="description" content="{{ data.textFirst }} sayım aracı, sürekli güncel ve anlık bilgileri çekerek değerli ziyaretçilerimize en doğru bilgiyi göstermektedir" />
 
     {% endblock %}
         {% block stylesheets %}
