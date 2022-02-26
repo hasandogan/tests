@@ -4,4 +4,4 @@ Disallow: /nogooglebot/
 User-agent: *
 Allow: /
 
-Sitemap: https://scmsayac.xyz/sitemap.xml
+Sitemap: https://www.geriyesay.com/sitemap.xml
