@@ -93,7 +93,10 @@ class profileController extends AbstractController
     public function showCustomCounter (string $slug){
         $entityManager = $this->getDoctrine()->getManager();
         $customCheck = $entityManager->getRepository(CustomeCounter::class)->findOneBy(['url' => $slug]);
-            $session = new Session();
+        if (!isset($customCheck)){
+            $this->redirect('geriyesay.com/404');
+        }
+        $session = new Session();
             return $this->render('customCounter.html.twig', [
                 'data' => $customCheck,
             ]);
