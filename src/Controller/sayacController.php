@@ -28,28 +28,28 @@ class sayacController extends AbstractController
     }
 
     /**
-     * @Route("/secim",name="secim-sayaci")
+     * @Route("/secim-sayaci",name="secim-sayaci")
      */
     public function secimSayaci(){
         return $this->render('sayac.html.twig');
 
     }
     /**
-     * @Route ("/new-year","new-year")
+     * @Route ("/yil-basi-sayaci","new-year")
      */
     public function newYear(){
         return $this->render('newYear.html.twig');
     }
 
     /**
-     * @Route ("/school","school")
+     * @Route ("/okul-sayaci","school")
      */
     public function school(){
         return $this->render('school.html.twig');
     }
 
     /**
-     * @Route ("/login","login")
+     * @Route ("/giris","login")
      */
    public function login(){
        return $this->render('login.html.twig');
@@ -58,7 +58,7 @@ class sayacController extends AbstractController
 
 
     /**
-     * @Route ("/register", name="login")
+     * @Route ("/kayitol", name="login")
      */
     public function register()
     {

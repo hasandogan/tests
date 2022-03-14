@@ -94,8 +94,6 @@ class profileController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $customCheck = $entityManager->getRepository(CustomeCounter::class)->findOneBy(['url' => $slug]);
         if ($customCheck == null ){
-            var_export("dddd");
-
           return  $this->redirect('/404');
         }
         $session = new Session();
