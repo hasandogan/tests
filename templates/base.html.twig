@@ -51,15 +51,15 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav">
-                            <a href="/secim" class="nav-item nav-link active">Seçim Sayacı</a>
-                            <a href="/new-year" class="nav-item nav-link active">Yıl Başı Sayacı</a>
-                            <a href="/school" class="nav-item nav-link active">Okul Sayacı</a>
+                            <a href="/secim-sayaci" class="nav-item nav-link active">Seçim Sayacı</a>
+                            <a href="/yil-basi-sayaci" class="nav-item nav-link active">Yıl Başı Sayacı</a>
+                            <a href="/okul-sayaci" class="nav-item nav-link active">Okul Sayacı</a>
                             {%  if app.session.get('id') %}
                                 <a href="/profile" style="float:right" class="nav-item nav-link active">Profil</a>
                                 <a href="/logout" style="float:right" class="nav-item nav-link active">Çıkış</a>
                             {% else %}
-                            <a href="/login" style="float:right" class="nav-item nav-link active">Giriş</a>
-                                <a href="/register" style="float:right" class="nav-item nav-link active">Kayıt Ol</a>
+                            <a href="/giris" style="float:right" class="nav-item nav-link active">Giriş</a>
+                                <a href="/kayitol" style="float:right" class="nav-item nav-link active">Kayıt Ol</a>
                             {% endif %}
                         </div>
                     </div>
